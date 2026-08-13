@@ -2,9 +2,7 @@
 IMC21 Workshop: Artificial Intelligence Methods for Microscopy Analysis and Knowledge Extraction
 
 
-
-
-Scientific Organiser: Rama Vasudevan (ORNL) and Gerd Duscher (University of Tennessee-Knoxville)
+Scientific Organiser: Rama Vasudevan (ORNL) and Gerd Duscher (University of Tennessee, Knoxville)
 
 Artificial intelligence (AI) and the advent of multimodal foundation models are rapidly changing the way microscopy workflows are executed, ranging from experimental design to autonomous operation and real time data processing. This workshop will focus on use of machine learning and AI approaches to analyze microscopy datasets, from training deep learning models for segmentation, to designing active learning loops for autonomous experiments on digital twins. We will further describe processes for knowledge extraction by correlative and machine learning methods with local crystallography and texture analysis applied to atomically resolved STEM datasets.
 
