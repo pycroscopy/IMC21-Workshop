@@ -1,16 +1,90 @@
 [project]
-name = "imc21-workshop"
+name = "asyncroscopy"
 version = "0.1.0"
-description = "Add your description here"
+description = "Asyncroscopy: asynchronous control framework for STEM automation"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = "==3.12.13"
 dependencies = [
-    "h5py==3.15.1",
-    "pytemlib",
-    "jupyter",
-    "ipykernel",
-    "gdown",
-    "ipympl>=0.9.0",
-    "ipywidgets>=8.0.0",
-    "matplotlib>=3.11.1",
+    "colorama>=0.4.6",
+    "defusedxml>=0.7.1",
+    "gevent>=25.9.1",
+    "h5py>=3.15.1",
+    "ipykernel>=7.1.0",
+    "jupyter>=1.1.1",
+    "lxml>=6.0.2",
+    "matplotlib>=3.10.7",
+    "multiprocess>=0.70.19",
+    "numpy>=2.3.5",
+    "pytango==10.1.2",
+    "pytest>=9.0.2",
+    "ruff>=0.15.2",
+    "scifireaders>=0.12.4",
+    "ase>=3.27.0",
+    "pyTEMlib>=0.2024.1.0",
+    "sidpy>=0.12.8",
+    "fastmcp>=0.1.0",
+    "anyio>=4.0.0",
+    "aicspylibczi>=3.3.1",
+    "jupyter-book>=2.0.0",
+    "tiled[all]>=0.2.9",
+    "pyyaml>=6.0.3",
+    "pyqt5>=5.15.11,<5.16; sys_platform != 'darwin' or platform_machine != 'arm64'",
+    "pyqt5-qt5==5.15.2; sys_platform == 'win32'",
+    "pyqt6>=6.8,<6.13",
+    "ipympl>=0.10.0",
+    "tifffile>=2026.5.15",
+    "pyro5>=5.17",
 ]
+
+[project.optional-dependencies]
+# Install the abTEM diffraction twin stack with:
+#     uv sync --extra diffraction
+diffraction = [
+    "abtem>=1.0.0",
+    "ase>=3.27.0",
+    "quantem>=0.1.9",
+]
+
+agent = [
+    "langchain",
+    "langchain-openai",
+    "langgraph",
+    "langchain-mcp-adapters",    
+]
+
+ollama = [
+    "langchain_ollama"
+]
+
+# Install SAM2 segmentation support with:
+#     uv sync --extra segment
+segment = [
+    "huggingface-hub",
+    "sam-2 @ git+https://github.com/facebookresearch/sam2.git",
+    "torch",
+    "torchvision",
+]
+
+[tool.setuptools]
+package-dir = { "" = "." }
+
+[tool.setuptools.packages.find]
+include = ["asyncroscopy*"]
+
+[tool.uv.sources]
+autoscript-core = { path = "stubs/AutoScript_v_1.17/autoscript_core-1.3.0-py3-none-any.whl" }
+autoscript-tem-microscope-client = { path = "stubs/AutoScript_v_1.17/autoscript_tem_microscope_client-1.17.0-py3-none-any.whl" }
+autoscript-tem-toolkit = { path = "stubs/AutoScript_v_1.17/autoscript_tem_toolkit-1.17.0-py3-none-any.whl" }
+thermoscientific-logging = { path = "stubs/AutoScript_v_1.17/thermoscientific_logging-1.3.0-py3-none-any.whl" }
+pyjem = { path = "stubs/PyJEM_v_1.3.0.3564/PyJEM-1.3.0.3564-py3-none-any.whl" }
+torch = [
+    { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+torchvision = [
+    { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
